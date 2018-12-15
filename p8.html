@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Restore IP Addresses</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Restore IP Addresses</h3>
+                    <p>
+                        You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+                    </p>
+                    <p>
+                        You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def restoreIpAddresses(self, s):
+                                    """
+                                    :type s: str
+                                    :rtype: List[str]
+                                    """
+                                    
+                                    counter_p1 = 0
+                                    counter_p2 = 0
+                                    
+                                    ip_list = []
+                                    
+                                    ip_s = ''
+                                    
+                                    for c in s:
+                                        if counter_p1 == 3:
+                                            ip_s += '.'
+                                            counter_p1 = 0
+                                        
+                                        ip_s += c
+                                        
+                                        counter_p1 += 1
+                                    
+                                    ip_list.append(ip_s)
+                                    
+                                    ip_s = ''
+                                    
+                                    counter_p1 = 0
+                                    counter_p2 = 0
+                                    point = 3
+                                    
+                                    for c in s:
+                                        if counter_p1 == point:
+                                            ip_s += '.'
+                                            counter_p1 = 0
+                                            counter_p2 += 1
+                                            point = 3
+                                            
+                                        ip_s += c
+                                        
+                                        if counter_p2 == 2:
+                                            point = 2
+                                            counter_p1 = 0
+                                            counter_p2 = 0
+                                        
+                                        counter_p1 += 1
+                                    
+                                    ip_list.append(ip_s)
+                                    
+                                    return ip_list
+                                                   
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>The problem gives a string of numbers that need to be formated as IP which most of the times has a point (.) at the end of the two characters or two numbers 11.133 then 3 at the end </p>
+                        
+                        <p>The solution I got is creating two loops one for the first of adding the point after 3 characters. I created a counter that every 3 iterations puts a point (.) then resets the counter then do the same until reaches the end. The second one is kind of weird, since I did 2 counters one for the first 3 digit point then an aditional counter that counts only how many times the 3 digit point is set, hence the second one will only get two chracters, so it changes the counter equality to 2, so that second counter will change the equality to two and then after two characters will add the point wrapping only two characters then changes to 3 again</p>
+                    
+                        <p>Works? Yes only for some samples. Then leetcode adds 000000 which we know is 0.0.0.0 which must be a special part or something that must detect zeros or counts the characters of the string, thats my idea. This can be applied in these examples for a string given then try to do something with them.</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

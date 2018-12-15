@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Add Two Numbers</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Add Two Numbers</h3>
+                    <p>
+                        You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+                    </p>
+                    <p>
+                        You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def addTwoNumbers(self, l1, l2):
+                                    """
+                                    :type l1: ListNode
+                                    :type l2: ListNode
+                                    :rtype: ListNode
+                                    """
+                                    
+                                    carry = 0
+                                    head = sum_node = ListNode(0)
+                                    
+                                    while l1 or l2:
+                                        v1 = 0
+                                        v2 = 0
+                                        if l1:
+                                            v1 = l1.val
+                                            l1 = l1.next
+                                        if l2:
+                                            v2 = l2.val
+                                            l2 = l2.next
+                                            
+                                        whole_sum = int(v1+v2+carry)
+                                        carry = int(whole_sum/10)
+                                        number_in = int(whole_sum%10)
+                                        sum_node.next = ListNode(number_in)
+                                        sum_node = sum_node.next
+                                    
+                                    return head.next               
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This problem was pick for the exam on class however I do not remember if it was on the exam or not. It is interesting because it is basically forces the programmer to do the sum algoritm and how it really works. Like what is the carry? How can it be calculated? In elementary school looks like magic </p>
+                        
+                        <p>The solution I could think of is to take step by step how the algoritm of sum works. So what I found out is that the sum of a number that goes above 10 need a special operation. We know that 5+5 (for example) is 10, so 0 will be writen in the final sum and 1 goes as <b>carry</b> so I found out that if you sum the two numbers then divide by 10 (since its a decimal system) will get you the carry number which will be adding to the next to numbers and the number that will be written is the remainder, which is the mod. Last but not least, then add that number to a new node and go until the list are pointing to a null/None value </p>
+                    
+                        <p>What I learned here is how this algorithm of a simple sum works and find the process by doing by hand and some research on the internet. This is the kind of problems need to be solved part by part</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

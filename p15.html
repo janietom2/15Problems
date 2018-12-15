@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title> Daily Temperatures</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3> Daily Temperatures</h3>
+                    <p>
+                        Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead. 
+                    </p>
+
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:         
+                                    def dailyTemperatures(self, T):
+                                    nxt = [float('inf')] * 102
+                                    ans = [0] * len(T)
+                                    for i in xrange(len(T) - 1, -1, -1):
+                                        #Use 102 so min(nxt[t]) has a default value
+                                        warmer_index = min(nxt[t] for t in xrange(T[i]+1, 102))
+                                        if warmer_index < float('inf'):
+                                            ans[i] = warmer_index - i
+                                        nxt[T[i]] = i
+                                    return ans      
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This is an array list problem that is very similar to a problem we did on the exam about  the list of stocks, it was about when to sell by checking element in the list/array from a item and forward moving. This is basically almost the same problem by </p>
+                        
+                        <p>The solution is iterate the the list while getting the element into a variable then check to the next until the end of the array. While iterating to the next do a difference (by substraction) to get the difference between a number to another (temp)  then added to an array.
+                        </p>
+
+                        <b>
+                            NOTE:
+                        </b>
+                        <p>
+                            This is not my solution, hence my solution did not work as intended, I got an error of array out of bounds and my time limit just expired, this is the solution on the "solution" tab on Leetcode, which let me knows how this works.
+                        </p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

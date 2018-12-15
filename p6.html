@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Letter Combinations of a Phone Number</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Letter Combinations of a Phone Number</h3>
+                    <p>
+                        Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.</p>
+                    <p>
+                        A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution(object):
+                                def letterCombinations(self, digits):
+                                    """
+                                    :type digits: str
+                                    :rtype: List[str]
+                                    """
+                                    fl = []
+                                    
+                                    numbers = {"1": "*", "2":["a", "b", "c"], "3":["d","e","f"], "4":["g","h","i"], "5":["j", "k", "l"], "6":["m","n","o"], "7":["p","q","r","s"], "8":["t","u","v"], "9":["w","x","y","z"]}
+                                    
+                                    
+                                    for i in numbers[digits[0]]:
+                                        for j in numbers[digits[1]]:
+                                            fl.append(i+""+j)
+                                        
+                                    return fl                 
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This problem is a simulation of a classic phone which contains letters and numbers. The way it worked is by pressing a number would print a character and by pressing numbers would give a combination of numbers. The idea is given a string number should give all the possible combinations of those numbers</p>
+                        
+                        <p>My idea for this problem is basically is create a dictionary that contains all the characters for that number (number is the key, and an array of values) and then doing a loop that gets the character then add them to an array item (or list in python). The problem here is that my code only works for two digits not more than 2. I could not complete the task with three or more, but my idea is getting each character then add of that element in the list/array. </p>
+                    
+                        <p>This is the first time i try to do that, however in the past when I used to work on a project that had multiple invoices and invoices had materials (For a project) i needed to count them one by one adding their value and I sure i figured out at that time, i can associate this problem with this.</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

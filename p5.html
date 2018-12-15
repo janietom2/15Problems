@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Remove Nth Node From End of List</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Remove Nth Node From End of List</h3>
+                    <p>
+                        Given a linked list, remove the n-th node from the end of list and return its head.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def removeNthFromEnd(self, head, n):
+                                    """
+                                    :type head: ListNode
+                                    :type n: int
+                                    :rtype: ListNode
+                                    """
+                                    nodes = []
+                                    while head:
+                                        nodes.append(head.val)
+                                        head = head.next
+                                    
+                                    del nodes[-n]
+                                    
+                                    return nodes
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This problems needs to remove a place in the node (which is given by parameter) starting for the end of a list of nodes.</p>
+                        <p>This problem is really simple for a point of view. The list can be iterated using a loop or by recursion then point using a counter until reaches <b>n</b> then point that to null. </p>
+
+                        <p>However I believe there is a more simple solution using what we have on Python. Lists are very useful and since the problem needs a list (return) the values can be passed on a list then use the <b>del</b> function of the lists can delete the node <b>n</b> then return the list</p>
+                    
+                        <p>This problem helps in other problems I personally have seen in class like reversing a linked list, the lists can help a lot, however the running time can be a problem</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

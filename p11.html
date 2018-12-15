@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Compare Version Numbers</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Compare Version Numbers</h3>
+                    <p>
+                        Compare two version numbers version1 and version2.
+                    </p>
+                    <p>
+                        If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0
+                    </p>
+                    <p>
+                        Compare two version numbers version1 and version2.
+                        If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0.
+                    </p>
+
+                    <p>
+                        You may assume that the version strings are non-empty and contain only digits and the . character.
+                        The . character does not represent a decimal point and is used to separate number sequences.
+                        For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth second-level revision of the second first-level revision.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def compareVersion(self, version1, version2):
+                                    """
+                                    :type version1: str
+                                    :type version2: str
+                                    :rtype: int
+                                    """
+                                    
+                                    v1 = len(version1)
+                                    v2 = len(version2)
+                                    
+                                    max_l = max(v1, v2)
+                                    min_l = min(v1, v2)
+                                    
+                                    for i in range(max_l):
+                                        if i >= min_l :
+                                            return 1
+                                        if version1[i] == "." or version2[i] == ".":
+                                            continue
+                                        if version1[i] != version2[i]:
+                                            return -1
+                                        
+                                    return 1                            
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This problem is interesting because it is basically doing same on other problems with a long string that need to compare each other to check if the version is the same. This works for checking versioning in software. The application of this I can think of is that a software installation package check for the version before installing in order to be compatible or to avoid any trouble for the user. This is very useful </p>
+                        
+                        <p>The solution i found is basically count the string lenght (get max and min) then on a loop going through each character and then iterate with a limit of the min length of the two version strings, then compare if the strings are the same, if not then return -1, if everything is ok then return 1 </p>
+                    
+                        <p>Note that this is not completed I have some errors on the code with some testing, but this is the best I could do in 15 minutes. This helps a lot in the future for problems with strings, which as I am writing this and doing the rest of the problem I notice that doing this kind of problems have a similar pattern with other things here and there. </p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

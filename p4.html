@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Search a 2D Matrix</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Search a 2D Matrix</h3>
+                    <p>
+                        Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+                    </p>
+                    <p>
+                        * Integers in each row are sorted from left to right.<br>
+                        * The first integer of each row is greater than the last integer of the previous row.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+    
+                                def binarySearch(self, alist, value):
+                            
+                                    first = 0
+                                    last = len(alist)-1
+                                    found = False
+                                    while first<=last and not found:
+                                        midpoint = (first + last)//2
+                                        if value == alist[midpoint]:        
+                                            found =  True 
+                                        else:
+                                            if value < alist[midpoint]:
+                                                last = midpoint-1
+                                            else:
+                                                if value > midpoint:
+                                                    first = midpoint+1  
+                                    return found
+                                
+                                def searchMatrix(self, matrix, target):
+                                    linear_array = []
+                                    
+                                    for x in range(len(matrix)):
+                                        for y in range(len(matrix[x])):
+                                            linear_array.append(matrix[x][y])
+                                    
+                                    return self.binarySearch(linear_array, target)
+                                    
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>The problem is a basic search in a 2d array. The thing is that the numbers are already sorted.</p>
+
+                        <p>My solution might not be the best but by the fact that they are sorted I use binary search to find if the key was in there. However the binary search only support 1D arrays/list so what I did is that I took the 2D array passed all values to a 1D array </p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

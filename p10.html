@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Compare Version Numbers</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>My Calendar I</h3>
+                    <p>
+                        Implement a MyCalendar class to store your events. A new event can be added if adding the event will not cause a double booking.
+
+                    </p>
+                    <p>
+                        Your class will have the method, book(int start, int end). Formally, this represents a booking on the half open interval [start, end), the range of real numbers x such that start <= x < end.
+                    </p>
+                    <p>
+                        A double booking happens when two events have some non-empty intersection (ie., there is some time that is common to both events.)
+                    </p>
+                    <p>
+                        For each call to the method MyCalendar.book, return true if the event can be added to the calendar successfully without causing a double booking. Otherwise, return false and do not add the event to the calendar.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class MyCalendar:
+
+                                days = []
+                                
+                                def __init__(self):
+                                    self.days = [0]*31
+                                    
+                            
+                                def book(self, start, end):
+                                    
+                                    if start > end:
+                                        return False
+                                    
+                                    if end > 31:
+                                        return False
+                                    
+                                    # print(len(self.days))
+                                    
+                                    for x in range(start, end-1):
+                                        if self.days[x] == 1:
+                                            return False
+                                        else:
+                                            self.days[x] = 1
+                                    
+                                    return True
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This is a very interesting problem about getting a calendar done. It stats basically by a class that contains a method book which has a start and end date, those days are going to be busy and you cannot book in those thays anymore.</p>
+                        
+                        <p>My solution was pretty simple. I created a 31 days list sized in the init method (constructor) then on the book section I checked that the end date cannot be more than the start (will have no sense at all) then I did iterate the list of the days and add a 1 on the index from the start day to the end date-1 (which is in the description) and check that the spaces where available.</p>
+                    
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

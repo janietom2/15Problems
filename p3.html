@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Multiply Strings</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Multiply Strings</h3>
+                    <p>
+                        Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def strToInt(self,s):
+                                    num = 0
+                                    for ch in s:
+                                        n = ord(ch) - ord('0')
+                                        num = num*10 + n
+                                    return num
+                            
+                                
+                                def multiply(self, num1, num2):
+                                    mult = self.strToInt(num1) * self.strToInt(num2)
+                                    
+                                    return mult
+                                   
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>The problem gives two strings with numbers that are needed to be multiplied. For example we have 2x3=6 </p>
+                        <p>The main idea here is to create a method hat converts string to integer by using their Unicode code then getting the number. Python has a method name <i>ord()</i> which returns the Unicode code. I searched on Google how to get an integer using unicode and a answer was added the unicode of X string by the unicode of 0 then that would be the integer then multipliying it by 10, since its a decimal number. In this case a loop is used because the number can go from single to multiple like 100 or 1000 (Limit of Integer 2^31)</p>
+                    
+                        <p>On a personal note I always asked myself how this was made and I learned on how this works and that Unicode is very useful for this kind of operations</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

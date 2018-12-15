@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title> Valid Square</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3> Valid Square</h3>
+                    <p>
+                        Given the coordinates of four points in 2D space, return whether the four points could construct a square.
+                    </p>
+                    <p>
+                        The coordinate (x,y) of a point is represented by an integer array with two integers.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+    
+                                def distance(self, x,y):
+                                    return (x[0]-y[0])**2 + (x[1]-y[1])**2
+                                    
+                                
+                                def validSquare(self, p1, p2, p3, p4):
+                                    """
+                                    :type p1: List[int]
+                                    :type p2: List[int]
+                                    :type p3: List[int]
+                                    :type p4: List[int]
+                                    :rtype: bool
+                                    """
+                                    
+                                    points = [self.distance(p1,p2), self.distance(p1,p3), self.distance(p1,p4), self.distance(p2,p3), self.distance(p2,p4), self.distance(p3,p4)]
+                                    
+                                    points.sort()
+                                    
+                                    if points[0]==points[1]==points[2]==points[3]:
+                                        if points[4]==points[5]:
+                                            return True
+                                    
+                                    return False
+                                                               
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This is a math problem, which given coordinates need to return if those create a square or not.  </p>
+                        
+                        <p>By just doing simple math this can be easily solved. What I read first is the formula of the square which is a*a (Side a x Side a). We know that the points have a distance between them so the distance from all points should be the same. To get the distance we need to calculate the Euclidian distance which is square((x0-y1)^2-(x1-y1)^2... (xn-yn)^2) then check if the calculation (distance is the same)</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>

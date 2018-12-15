@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <!-- master css -->
+   <link rel="stylesheet" href="assets/css/master.css">
+   <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <link href="assets/css/prism.css" rel="stylesheet" />
+    <title>Reverse Words in a String</title>
+
+</head>
+<body>
+   <div class="container-fluid main-header">
+        <h1><a href="index.html">Cracking The Code Interview - Problems</a></h1>
+   </div>
+
+   <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col-12 main-content">
+                <h3>Reverse Words in a String</h3>
+                    <p>
+                        Given an input string, reverse the string word by word.
+                    </p>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Code</h5>
+                        <pre>
+                            <code class="language-python">
+                                class Solution:
+                                def restoreIpAddresses(self, s):
+                                    """
+                                    :type s: str
+                                    :rtype: List[str]
+                                    """
+                                    
+                                    words = []
+                                    curr_w = ''
+                                    
+                                    # get words
+                                    for i in range(len(s)):
+                                        if i == len(s)-1:
+                                            curr_w += s[i]
+                                            words.append(curr_w)
+                                        
+                                        if s[i] == " ":
+                                            words.append(curr_w)
+                                            curr_w = ''
+                                        else:
+                                            curr_w += s[i]
+                                    
+                                    final_w = ''
+                                    
+                                    for x in range(len(words)-1, -1, -1):
+                                        final_w += words[x]
+                                        
+                                        if x != 0:
+                                            final_w += ' '
+                                    
+                                    return final_w
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="col-6">
+                        <h5>IDEAL</h5>
+                        <p>This problem was one of the first we saw in class, however I found out that my code was wrong when I wrote in a notebook paper sheet. I noticed that the problem is that the last word will not get into the array since the " "(space) will avoid getting that word. Anyway, this problem tries to get each word and put it on reverse creating a non-sense setence.</p>
+                        
+                        <p>The solution I found (a new one) is counting or checking the ending of the setence because this is problems need to check the ending because the part where the word is going to be added into an array is when a " "(space) is detected, hence the last word will not have a space to the right, so need to check if it is the last word. Then after getting each word into an array/list, need to traverse (again) that array reversed (starting from the lenght of it to 0) then concatinate a string variable and adding the word and a space to the right. This also has a trick since the last word do not need a space to the right, so again need a condition to do not include it at the end.</p>
+                    
+                        <p>Same with problem <a href="p8.html">p8</a> with the IP, there are things that need to be detected to format the string depending on what the problem needs. This was a good follow up to the other problems of strings.</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <script src="assets/js/prism.js"></script>
+
+</body>
+</html>
